@@ -18,4 +18,21 @@ RUN wget -qO- https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-a
 RUN "./sfdx/install"
 RUN export PATH=./sfdx/$(pwd):$PATH
 RUN sfdx update
+
+# Check version of Salesforce CLI
 RUN sfdx --version
+RUN sfdx plugins --core
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+ADD . /app
+
+# Make the scripts executeable
+RUN chmod +x auth.sh
+
+ARG sfdxurl
+
+# Run the scripts
+CMD ["bash", "auth.sh"]
