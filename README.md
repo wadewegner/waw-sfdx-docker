@@ -14,7 +14,6 @@ Also, make sure you install `jq`, which is used to grab the `sfdxAuthUrl` of you
 export SFDX_DEV_HUB_AUTH_URL=$(sfdx force:org:display --verbose -u <your-dev-hub> --json | jq -r .result.sfdxAuthUrl)
 
 docker run -it -e SFDX_DEV_HUB_AUTH_URL=$SFDX_DEV_HUB_AUTH_URL wadewegner/waw-sfdx-docker:latest
-
 ```
 
 ### Run Locally
