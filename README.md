@@ -2,6 +2,8 @@
 
 An example docker image for the Salesforce CLI.
 
+![sfdx-container](https://user-images.githubusercontent.com/746259/42531540-73b2c6a4-8441-11e8-8d01-36d3e47c9ce7.gif)
+
 ## Usage
 
 Make sure you have Docker setup and working properly. Review the [Getting Started](https://docs.docker.com/get-started/) materials from Docker.
