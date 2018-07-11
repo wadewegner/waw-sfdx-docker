@@ -30,9 +30,8 @@ WORKDIR /app
 ADD . /app
 
 # Make the scripts executeable
-RUN chmod +x auth.sh
+RUN ["chmod", "+x", "/app/auth.sh"]
 
-ARG sfdxurl
-
-# Run the scripts
-CMD ["bash", "auth.sh"]
+# Run the script
+# CMD ["bash", "auth.sh"]
+ENTRYPOINT ["/app/auth.sh"]
