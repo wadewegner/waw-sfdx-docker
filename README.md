@@ -1,8 +1,8 @@
 # waw-sfdx-docker
 
-An example docker image for the Salesforce CLI.
+A docker image you can use for active Salesforce DX development.
 
-![sfdx-container](https://user-images.githubusercontent.com/746259/42531540-73b2c6a4-8441-11e8-8d01-36d3e47c9ce7.gif)
+<img src="assets/dockerfordx.gif" width="600px" />
 
 ## Usage
 
@@ -12,18 +12,24 @@ Also, make sure you install `jq`, which is used to grab the `sfdxAuthUrl` of you
 
 ### Use Published Image
 
+Follow these instructions if you want to use my published image.
+
 ```
 export SFDX_DEV_HUB_AUTH_URL=$(sfdx force:org:display --verbose -u <your-dev-hub> --json | jq -r .result.sfdxAuthUrl)
 
-docker run -it -e SFDX_DEV_HUB_AUTH_URL=$SFDX_DEV_HUB_AUTH_URL wadewegner/waw-sfdx-docker:latest
+docker run -dit --name <your-name> -e SFDX_DEV_HUB_AUTH_URL=$SFDX_DEV_HUB_AUTH_URL wadewegner/waw-sfdx-docker:latest
+docker exec -i -t <your-name> /bin/bash
 ```
 
-### Run Locally
+### Build Locally
+
+Follow these instructions if you want to build your own image locally.
 
 ```
 export SFDX_DEV_HUB_AUTH_URL=$(sfdx force:org:display --verbose -u <your-dev-hub> --json | jq -r .result.sfdxAuthUrl)
 
 docker build -t <your-tag> .
 docker image ls | <your-tag>
-docker run -it -e SFDX_DEV_HUB_AUTH_URL=$SFDX_DEV_HUB_AUTH_URL <your-tag>
+docker run -dit --name <your-name> -e SFDX_DEV_HUB_AUTH_URL=$SFDX_DEV_HUB_AUTH_URL <your-tag>
+docker exec -i -t <your-name> /bin/bash
 ```
