@@ -1,0 +1,5 @@
+# don't copy these files into docker image
+.git
+Dockerfile
+README.md
+docker-compose*
