@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  sfdx:
+    image: bretfisher/sfdx
+    build: .
+    volumes:
+      - ~/.sfdx:/root/.sfdx
+    environment:
+      SFDX_DEV_HUB_AUTH_URL: "${SFDX_DEV_HUB_AUTH_URL}"
